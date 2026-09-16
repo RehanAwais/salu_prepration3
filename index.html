@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SALU Pre-Entry Test 2026 - 100 MCQs (All Subjects + Urdu + Sindhi)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, 'Noto Nastaliq Urdu', system-ui, sans-serif;
+    }
+    body {
+      background: linear-gradient(145deg, #f5f7fa 0%, #e9edf5 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 0.8rem;
+    }
+    .test-container {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 20, 30, 0.3);
+      padding: 2rem 2rem 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0a2e4b;
+      text-align: center;
+      letter-spacing: -0.5px;
+      border-bottom: 4px solid #1e6f9f;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      width: 100%;
+    }
+    .subhead {
+      text-align: center;
+      color: #2c5a7a;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      background: #d9e9f5;
+      padding: 0.4rem 1.5rem;
+      border-radius: 30px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .question-card {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid #d0e0ed;
+      transition: 0.15s;
+    }
+    .question-card:hover {
+      border-color: #8ab3d0;
+    }
+    .q-text {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #0b2e44;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .q-num {
+      background: #1e6f9f;
+      color: white;
+      border-radius: 40px;
+      padding: 0.1rem 0.8rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-right: 10px;
+      line-height: 1.6;
+      flex-shrink: 0;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding-left: 0.5rem;
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.98rem;
+      color: #1e3a4e;
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.8rem;
+      transition: background 0.1s;
+      cursor: pointer;
+    }
+    .option:hover {
+      background: #e2eef9;
+    }
+    .option input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #1e6f9f;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .option label {
+      cursor: pointer;
+      flex: 1;
+      padding: 0.2rem 0;
+    }
+    .btn-submit {
+      background: #0a2e4b;
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 60px;
+      padding: 1rem 2rem;
+      width: 100%;
+      max-width: 400px;
+      margin: 2rem auto 1rem;
+      display: block;
+      cursor: pointer;
+      box-shadow: 0 12px 20px -8px rgba(10, 46, 75, 0.4);
+      transition: 0.2s;
+      letter-spacing: 1px;
+    }
+    .btn-submit:hover {
+      background: #134b70;
+      transform: scale(1.01);
+    }
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+    .result-area {
+      margin-top: 2rem;
+      background: #e7f3ff;
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      border-left: 12px solid #1e6f9f;
+      display: none;
+    }
+    .result-area.show {
+      display: block;
+    }
+    .score-box {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #0a2e4b;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .score-box span {
+      background: #1e6f9f;
+      color: white;
+      padding: 0.5rem 1.8rem;
+      border-radius: 80px;
+      font-size: 2.2rem;
+    }
+    .answer-feedback {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 2rem;
+      justify-content: center;
+      margin-top: 1rem;
+      font-weight: 500;
+    }
+    .correct-badge {
+      background: #c8e6c9;
+      color: #1b5e20;
+      padding: 0.3rem 1.2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+    }
+    .incorrect-badge {
+      background: #ffcdd2;
+      color: #b71c1c;
+      padding: 0.3rem 1.2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+    }
+    .detail-list {
+      max-height: 450px;
+      overflow-y: auto;
+      margin-top: 1.8rem;
+      padding-right: 0.5rem;
+      border-top: 1px solid #b3d4e9;
+      padding-top: 1.2rem;
+    }
+    .detail-item {
+      display: flex;
+      gap: 10px;
+      font-size: 0.9rem;
+      padding: 0.5rem 0.2rem;
+      border-bottom: 1px dashed #b3d4e9;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .detail-num {
+      font-weight: 700;
+      min-width: 40px;
+      color: #0a2e4b;
+    }
+    .detail-status {
+      font-weight: 700;
+      margin-left: auto;
+      padding: 0.1rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+    }
+    .status-correct {
+      background: #c8e6c9;
+      color: #1b5e20;
+    }
+    .status-wrong {
+      background: #ffcdd2;
+      color: #b71c1c;
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      color: #5a7a92;
+      font-size: 0.85rem;
+    }
+    .salu-logo {
+      font-weight: 800;
+      color: #1e6f9f;
+      letter-spacing: 2px;
+    }
+    .urdu {
+      direction: rtl;
+      font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+      font-size: 1.15rem;
+      line-height: 2;
+    }
+    .sindhi {
+      direction: rtl;
+      font-family: 'Noto Nastaliq Urdu', 'MB Sindhi Web', serif;
+      font-size: 1.1rem;
+      line-height: 2;
+    }
+    @media (max-width: 600px) {
+      .test-container { padding: 1.2rem; }
+      h1 { font-size: 1.5rem; }
+      .question-card { padding: 1rem; }
+      .q-text { font-size: 1rem; }
+      .urdu { font-size: 1rem; }
+      .sindhi { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="test-container">
+  <h1>📘 SALU Pre-Entry Test 2026</h1>
+  <div class="subhead">100 MCQs • English, Urdu, Sindhi, Biology, Chemistry, Physics, Math, Islamiat, Pak Studies, GK</div>
+
+  <form id="mcqForm">
+    <div id="questionsContainer"></div>
+    <button type="button" class="btn-submit" id="submitBtn">✅ Submit Test</button>
+  </form>
+
+  <div class="result-area" id="resultArea">
+    <div class="score-box" id="scoreDisplay">0 / 100</div>
+    <div class="answer-feedback" id="feedbackSummary"></div>
+    <div class="detail-list" id="detailList"></div>
+  </div>
+  <div class="footer-note">
+    <span class="salu-logo">SALU</span> • Prepared by Advocate Maqsood Ali Channa & Safdar Ali Soomro
+  </div>
+</div>
+
+<script>
+  // ==============================================================
+  // 100 UNIQUE QUESTIONS — including English, Urdu, Sindhi,
+  // Biology, Chemistry, Physics, Math, Islamiat, Pak Studies, GK
+  // All taken from the provided PDF content.
+  // ==============================================================
+  const questions = [
+    // ---------- ENGLISH LITERATURE (1-12) ----------
+    { q: "Who wrote 'The Induction of French Camp'?", options: ["Robert Browning", "William Wordsworth", "Campion", "Albert"], correct: 0 },
+    { q: "Robert Browning was born in 1812 and died in ______.", options: ["1889", "1890", "1900", "1888"], correct: 0 },
+    { q: "'Napoleon was the Emperor of' – this line belongs to which poet?", options: ["Robert Browning", "William Wordsworth", "Campion", "Albert"], correct: 0 },
+    { q: "Who is the God of 'Fame' according to the text?", options: ["Bäuchapis", "Albert", "Campion", "Nature"], correct: 0 },
+    { q: "William Wordsworth is the Poet of ______.", options: ["Nature", "Fame", "Religion", "War"], correct: 0 },
+    { q: "'The Man of Life Upright' is written by ______.", options: ["Campion", "Robert Browning", "Wordsworth", "Albert"], correct: 0 },
+    { q: "Mechanical waves produce disturbance in a ______.", options: ["Material medium", "Vacuum", "Electric field", "Magnetic field"], correct: 0 },
+    { q: "Sound waves are ______ waves.", options: ["Mechanical", "Electromagnetic", "Transverse", "Light"], correct: 0 },
+    { q: "Electromagnetic waves are ______ in nature.", options: ["Transverse", "Longitudinal", "Mechanical", "Stationary"], correct: 0 },
+    { q: "Sounds of same frequency in air has same ______.", options: ["Pitch", "Loudness", "Quality", "Speed"], correct: 0 },
+    { q: "Electromagnetic theory of light was proposed by ______.", options: ["Maxwell", "Hertz", "Einstein", "Newton"], correct: 0 },
+    { q: "Color of light determined by its ______.", options: ["Frequency", "Amplitude", "Speed", "Intensity"], correct: 0 },
+
+    // ---------- ENGLISH + PHYSICS (13-20) ----------
+    { q: "Light from sun reaches us nearly in ______.", options: ["16 seconds", "8 minutes", "1 minute", "5 seconds"], correct: 0 },
+    { q: "Image formed on concave lens is always ______.", options: ["Virtual, erect and diminished", "Real and inverted", "Virtual and magnified", "Real and magnified"], correct: 0 },
+    { q: "Special theory of relativity was proposed by ______.", options: ["Einstein", "Newton", "Maxwell", "Hertz"], correct: 0 },
+    { q: "Basic unit of length in metric system is ______.", options: ["Metre", "Centimetre", "Kilometre", "Millimetre"], correct: 0 },
+    { q: "SI unit of Time is ______.", options: ["Second", "Minute", "Hour", "Day"], correct: 0 },
+    { q: "Dimension of Force is ______.", options: ["MLT⁻²", "ML²T⁻²", "MLT²", "M⁰LT⁻²"], correct: 0 },
+    { q: "Value of G (Gravitational Constant) is ______.", options: ["6.67×10⁻¹¹ Nm²/kg²", "9.8 m/s²", "6.63×10⁻³⁴ Js", "3×10⁸ m/s"], correct: 0 },
+    { q: "SI unit of work is ______.", options: ["Joule", "Newton", "Watt", "Pascal"], correct: 0 },
+
+    // ---------- PHYSICS (21-30) ----------
+    { q: "The rate of doing work is called ______.", options: ["Power", "Energy", "Force", "Momentum"], correct: 0 },
+    { q: "SI unit of power is ______.", options: ["Watt", "Joule", "Newton", "Horsepower"], correct: 0 },
+    { q: "1 Horse Power is equal to ______.", options: ["746 watts", "1000 watts", "500 watts", "100 watts"], correct: 0 },
+    { q: "The ability of doing work is called ______.", options: ["Energy", "Power", "Force", "Momentum"], correct: 0 },
+    { q: "Value of Planck's constant is ______.", options: ["6.625×10⁻³⁴ J·s", "6.67×10⁻¹¹ Nm²/kg²", "3×10⁸ m/s", "1.6×10⁻¹⁹ C"], correct: 0 },
+    { q: "Photoelectric effect was discovered by ______.", options: ["Hertz", "Einstein", "Maxwell", "Bohr"], correct: 0 },
+    { q: "X-rays are ______ waves.", options: ["Electromagnetic", "Mechanical", "Sound", "Matter"], correct: 0 },
+    { q: "Beta particles are ______.", options: ["Electrons", "Protons", "Neutrons", "Positrons"], correct: 0 },
+    { q: "Gamma rays carry ______.", options: ["No charge", "Positive charge", "Negative charge", "Both charges"], correct: 0 },
+    { q: "E = mc² is given by ______.", options: ["Einstein", "Newton", "Planck", "Bohr"], correct: 0 },
+
+    // ---------- BIOLOGY (31-45) ----------
+    { q: "The number of chromosomes present in human is ______.", options: ["46", "23", "48", "44"], correct: 0 },
+    { q: "The study of structures of tissues is termed as ______.", options: ["Histology", "Cytology", "Anatomy", "Morphology"], correct: 0 },
+    { q: "Movement of substances from higher concentration to lower concentration is called ______.", options: ["Diffusion", "Osmosis", "Active transport", "Plasmolysis"], correct: 0 },
+    { q: "The movement of solvent from higher concentration to lower concentration is ______.", options: ["Osmosis", "Diffusion", "Active transport", "Imbibition"], correct: 0 },
+    { q: "Tracheids and Tracheae are found in ______.", options: ["Xylem", "Phloem", "Cambium", "Cortex"], correct: 0 },
+    { q: "The concentration of Oxygen in atmosphere is about ______.", options: ["21%", "78%", "0.04%", "50%"], correct: 0 },
+    { q: "All populations living in a particular area form a ______.", options: ["Community", "Ecosystem", "Biome", "Species"], correct: 0 },
+    { q: "The unicellular flower area is called ______.", options: ["Unicellular", "Multicellular", "Colonial", "Filamentous"], correct: 0 },
+    { q: "Number of chromosomes present in plant (onion) is ______.", options: ["16", "32", "8", "24"], correct: 0 },
+    { q: "Which of the following is a correct statement about ecological levels?", options: ["Population → Community → Ecosystem", "Community → Population → Ecosystem", "Ecosystem → Population → Community", "Biome → Community → Population"], correct: 0 },
+    { q: "The number of chromosomes present in animal (fruit fly) is ______.", options: ["8", "4", "12", "16"], correct: 0 },
+    { q: "Tracheids are ______ in nature.", options: ["Elongated", "Spherical", "Flat", "Cuboidal"], correct: 0 },
+    { q: "The study of tissues is known as ______.", options: ["Histology", "Physiology", "Ecology", "Genetics"], correct: 0 },
+    { q: "Which of the following is an example of diffusion?", options: ["Perfume spreading in air", "Water moving through root", "Glucose absorption", "Protein synthesis"], correct: 0 },
+    { q: "Osmosis is the movement of ______.", options: ["Water", "Solutes", "Proteins", "Ions"], correct: 0 },
+
+    // ---------- CHEMISTRY (46-60) ----------
+    { q: "The number of moles present in 12g of carbon is ______.", options: ["1", "2", "0.5", "12"], correct: 0 },
+    { q: "Law of Octave was given by ______.", options: ["Newland", "Mendeleev", "Dobereiner", "Lavoisier"], correct: 0 },
+    { q: "Chemical formula of heavy water is ______.", options: ["D2O", "H2O", "H2O2", "DHO"], correct: 0 },
+    { q: "Large amount of hydrogen present on ______.", options: ["Sun", "Earth", "Moon", "Mars"], correct: 0 },
+    { q: "Chemical formula of gypsum is ______.", options: ["CaSO4·2H2O", "CaSO4", "CaCO3", "Ca(OH)2"], correct: 0 },
+    { q: "Refractive index of diamond is ______.", options: ["2.45", "1.33", "1.52", "2.42"], correct: 0 },
+    { q: "'King of All chemicals' is ______.", options: ["H2SO4", "HCl", "HNO3", "NaOH"], correct: 0 },
+    { q: "In nature gas 95% methane is present in ______.", options: ["Natural gas", "Biogas", "Coal gas", "Petrol"], correct: 0 },
+    { q: "Water soluble vitamins are ______.", options: ["B and C", "A and D", "E and K", "A and K"], correct: 0 },
+    { q: "If the material is acidic, blue litmus paper turns ______.", options: ["Red", "Blue", "Green", "Yellow"], correct: 0 },
+    { q: "Neutron was discovered by ______.", options: ["James Chadwick", "Rutherford", "Bohr", "Thomson"], correct: 0 },
+    { q: "Nucleus of an atom contains ______.", options: ["Neutron and proton", "Electron and proton", "Electron and neutron", "Only protons"], correct: 0 },
+    { q: "Radioactivity was first observed by ______.", options: ["Henri Becquerel", "Marie Curie", "Roentgen", "Einstein"], correct: 0 },
+    { q: "X-rays were discovered by ______.", options: ["Wilhelm Roentgen", "Henry Becquerel", "Chadwick", "Maxwell"], correct: 0 },
+    { q: "Atomic mass of an electron is ______.", options: ["1/1836 u", "1 u", "1836 u", "0 u"], correct: 0 },
+
+    // ---------- MATHEMATICS (61-75) ----------
+    { q: "Average of 12, 15 and 18 is ______.", options: ["15", "12", "18", "14"], correct: 0 },
+    { q: "Natural numbers start from ______.", options: ["0", "1", "2", "-1"], correct: 1 },
+    { q: "Whole numbers include natural numbers and ______.", options: ["0", "1", "2", "-1"], correct: 0 },
+    { q: "Integers include whole numbers and their ______.", options: ["Negatives", "Fractions", "Decimals", "Irrationals"], correct: 0 },
+    { q: "An angle equal to 90° is called ______.", options: ["Right angle", "Acute angle", "Obtuse angle", "Straight angle"], correct: 0 },
+    { q: "An angle less than 90° is called ______.", options: ["Acute angle", "Right angle", "Obtuse angle", "Reflex angle"], correct: 0 },
+    { q: "An angle greater than 90° but less than 180° is ______.", options: ["Obtuse angle", "Acute angle", "Right angle", "Straight angle"], correct: 0 },
+    { q: "An angle equal to 180° is called ______.", options: ["Straight angle", "Right angle", "Acute angle", "Obtuse angle"], correct: 0 },
+    { q: "Two angles whose sum is 90° are called ______.", options: ["Complementary", "Supplementary", "Adjacent", "Vertical"], correct: 0 },
+    { q: "Two angles whose sum is 180° are called ______.", options: ["Supplementary", "Complementary", "Adjacent", "Vertical"], correct: 0 },
+    { q: "Composite numbers are those which have ______ factors.", options: ["More than two", "Only two", "Only one", "No"], correct: 0 },
+    { q: "A prime number has exactly ______ factors.", options: ["2", "1", "3", "0"], correct: 0 },
+    { q: "The value of π is approximately ______.", options: ["3.14", "2.14", "3.41", "4.13"], correct: 0 },
+    { q: "Area of a circle is ______.", options: ["πr²", "2πr", "πd", "2πr²"], correct: 0 },
+    { q: "Perimeter of a square of side 'a' is ______.", options: ["4a", "a²", "2a", "a³"], correct: 0 },
+
+    // ---------- ISLAMIAT (76-88) ----------
+    { q: "Prophet Muhammad (PBUH) lived in ______ after migration.", options: ["Madina", "Makkah", "Taif", "Jerusalem"], correct: 0 },
+    { q: "The first revelation was received in the cave of ______.", options: ["Hira", "Sawr", "Uhud", "Arafat"], correct: 0 },
+    { q: "Eid prayer is ______.", options: ["Wajib", "Farz", "Sunnah", "Nafl"], correct: 0 },
+    { q: "In Hajj, touching the Black Stone is called ______.", options: ["Istilam", "Tawaf", "Sa'i", "Rami"], correct: 0 },
+    { q: "The name 'Muhammad' is mentioned ______ times in the Quran.", options: ["4", "1", "2", "5"], correct: 0 },
+    { q: "Surah Al-Naml is the Surah in which ______ comes.", options: ["Bismillah", "Alhamdulillah", "SubhanAllah", "Allahu Akbar"], correct: 0 },
+    { q: "Surah Al-Toba is the ______ Surah of Quran.", options: ["9th", "1st", "2nd", "10th"], correct: 0 },
+    { q: "Famous Surah Ghazwah Badar is mentioned in ______.", options: ["Surah Al-Imran", "Surah Yaseen", "Surah Al-Naml", "Surah Al-Toba"], correct: 0 },
+    { q: "Surah Yaseen is known as the ______ of Quran.", options: ["Heart", "Beauty", "Crown", "Light"], correct: 0 },
+    { q: "Hazrat ______ was the foster mother of Prophet Muhammad (PBUH).", options: ["Halima", "Amina", "Khadija", "Fatima"], correct: 0 },
+    { q: "Biate Rizwan took place in ______ Hijri.", options: ["6", "5", "7", "8"], correct: 0 },
+    { q: "______ Prophets are mentioned in the Quran.", options: ["26", "25", "24", "27"], correct: 0 },
+    { q: "Janaza prayer has no ______.", options: ["Azan", "Ruku", "Sujud", "Qiyam"], correct: 0 },
+
+    // ---------- PAK STUDIES & GK (89-95) ----------
+    { q: "Quaid-e-Azam was born on ______.", options: ["25 December 1876", "25 December 1875", "25 December 1877", "25 December 1878"], correct: 0 },
+    { q: "Quaid-e-Azam joined Indian National Congress in ______.", options: ["1906", "1900", "1910", "1920"], correct: 0 },
+    { q: "Quaid-e-Azam resigned from Congress in ______.", options: ["1920", "1906", "1930", "1940"], correct: 0 },
+    { q: "Quaid-e-Azam gave 14 points on ______.", options: ["28 March 1929", "28 March 1930", "28 March 1928", "28 March 1931"], correct: 0 },
+    { q: "The 1st President of Pakistan was ______.", options: ["Iskandar Mirza", "Ayub Khan", "Yahya Khan", "Zulfikar Ali Bhutto"], correct: 0 },
+    { q: "Current Foreign Minister of Pakistan is ______.", options: ["Ishaq Dar", "Bilawal Bhutto", "Shah Mehmood Qureshi", "Hina Rabbani Khar"], correct: 0 },
+    { q: "Chairman Senate of Pakistan is ______.", options: ["Yousuf Raza Gillani", "Sadiq Sanjrani", "Raza Rabbani", "Farooq Naek"], correct: 0 },
+
+    // ---------- URDU (96-98) — from page 8 ----------
+    { q: "اردو زبان کے رسم الخط کا سرچشمہ کیا ہے؟", options: ["عربی", "فارسی", "ترکی", "سنسکرت"], correct: 0, lang: 'urdu' },
+    { q: "اردو زبان کس زبان سے زیادہ قریب ہے؟", options: ["ہندی", "عربی", "ترکی", "انگریزی"], correct: 0, lang: 'urdu' },
+    { q: "علی اصول تم کو نصیحت ______ ہے۔", options: ["نیکی", "بدی", "علم", "مال"], correct: 0, lang: 'urdu' },
+
+    // ---------- SINDHI (99-100) — from page 13 ----------
+    { q: "سنڌي ٻوليءَ جو مشهور شاعر ۽ مصنف ڪير آهي؟", options: ["شاهه عبداللطيف ڀٽائي", "سچل سرمست", "بلاول شاهه", "شيخ اياز"], correct: 0, lang: 'sindhi' },
+    { q: "ڪليم ڪنهن صنف ۾ وڌيڪ ڪلام چيو آهي؟", options: ["غزل", "قصيدو", "مرثيو", "نظم"], correct: 0, lang: 'sindhi' }
+  ];
+
+  // Verify count = 100
+  console.log('Total questions:', questions.length);
+
+  // ==============================================================
+  // RENDER
+  // ==============================================================
+  const container = document.getElementById('questionsContainer');
+  const letters = ['A', 'B', 'C', 'D'];
+
+  questions.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.dataset.index = index;
+
+    const qText = document.createElement('div');
+    qText.className = 'q-text';
+    let extraClass = '';
+    if (item.lang === 'urdu') extraClass = 'urdu';
+    if (item.lang === 'sindhi') extraClass = 'sindhi';
+    qText.innerHTML = `<span class="q-num">Q${index + 1}</span> <span class="${extraClass}">${item.q}</span>`;
+    card.appendChild(qText);
+
+    const optionsDiv = document.createElement('div');
+    optionsDiv.className = 'options';
+
+    item.options.forEach((opt, optIndex) => {
+      const label = document.createElement('label');
+      label.className = 'option';
+      const radio = document.createElement('input');
+      radio.type = 'radio';
+      radio.name = `q${index}`;
+      radio.value = optIndex;
+      radio.dataset.qIndex = index;
+      radio.dataset.optIndex = optIndex;
+      label.appendChild(radio);
+      const span = document.createElement('span');
+      let optClass = '';
+      if (item.lang === 'urdu') optClass = 'urdu';
+      if (item.lang === 'sindhi') optClass = 'sindhi';
+      span.className = optClass;
+      span.textContent = `${letters[optIndex]}. ${opt}`;
+      label.appendChild(span);
+      optionsDiv.appendChild(label);
+    });
+
+    card.appendChild(optionsDiv);
+    container.appendChild(card);
+  });
+
+  // ==============================================================
+  // SUBMIT
+  // ==============================================================
+  const submitBtn = document.getElementById('submitBtn');
+  const resultArea = document.getElementById('resultArea');
+  const scoreDisplay = document.getElementById('scoreDisplay');
+  const feedbackSummary = document.getElementById('feedbackSummary');
+  const detailList = document.getElementById('detailList');
+
+  submitBtn.addEventListener('click', function () {
+    // Check if all attempted
+    let allAttempted = true;
+    for (let i = 0; i < questions.length; i++) {
+      if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+        allAttempted = false;
+        break;
+      }
+    }
+    if (!allAttempted) {
+      alert('⚠️ Please attempt all 100 questions before submitting.');
+      return;
+    }
+
+    // Score
+    let score = 0;
+    const userAnswers = [];
+    for (let i = 0; i < questions.length; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      const val = selected ? parseInt(selected.value) : -1;
+      userAnswers.push(val);
+      if (val === questions[i].correct) score++;
+    }
+
+    // Show result
+    resultArea.classList.add('show');
+    scoreDisplay.innerHTML = `${score} / ${questions.length}`;
+    const wrong = questions.length - score;
+    feedbackSummary.innerHTML = `
+      <span class="correct-badge">✅ Correct: ${score}</span>
+      <span class="incorrect-badge">❌ Incorrect: ${wrong}</span>
+    `;
+
+    // Detail list
+    detailList.innerHTML = '';
+    for (let i = 0; i < questions.length; i++) {
+      const isCorrect = userAnswers[i] === questions[i].correct;
+      const detail = document.createElement('div');
+      detail.className = 'detail-item';
+      detail.innerHTML = `
+        <span class="detail-num">Q${i + 1}</span>
+        <span>Your: ${userAnswers[i] >= 0 ? letters[userAnswers[i]] : '—'} | Correct: ${letters[questions[i].correct]}</span>
+        <span class="detail-status ${isCorrect ? 'status-correct' : 'status-wrong'}">${isCorrect ? '✓' : '✗'}</span>
+      `;
+      detailList.appendChild(detail);
+    }
+
+    resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Highlight selected
+  document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', function () {
+      const name = this.name;
+      document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+        r.closest('.option').style.background = '';
+      });
+      if (this.checked) {
+        this.closest('.option').style.background = '#d4e6f7';
+      }
+    });
+  });
+</script>
+</body>
+</html>
